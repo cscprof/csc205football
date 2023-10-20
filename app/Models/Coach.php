@@ -24,4 +24,9 @@ class Coach extends Model
         'TeamID',
         'EmailAddress'
     ];
+
+    public function team(){
+
+        return $this->hasOne(Team::class,'teamID', 'TeamId');
+    }
 }

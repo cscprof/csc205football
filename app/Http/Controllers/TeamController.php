@@ -14,9 +14,9 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $questions = Team::get();;
+        $teams = Team::with('coaches')->get();;
 
-        return $questions->toJSON();
+        return $teams->toJSON();
     }
 
     /**

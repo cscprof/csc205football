@@ -20,4 +20,11 @@ class Team extends Model
         'Name',
         'Description',
     ];
+
+    public function coaches(){
+
+        return $this->hasMany(Coach::class,'TeamId', 'teamID');
+
+    }
+
 }

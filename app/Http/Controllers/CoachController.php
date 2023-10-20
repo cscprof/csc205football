@@ -10,11 +10,10 @@ class CoachController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $questions = Coach::get();;
+        $questions = Coach::with('team')->get();
 
         return $questions->toJSON();
     }
