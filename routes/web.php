@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\CoachController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\TeamController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +17,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::resource('answers', AnswerController::class);
+Route::resource('coaches', CoachController::class);
+Route::resource('questions', QuestionController::class);
+Route::resource('teams', TeamController::class);
+
 
 Route::get('/', function () {
-    return view('welcome');
+    return '<h1>Hello!</h1>';
+    // return view('welcome');
 });
