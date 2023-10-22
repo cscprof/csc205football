@@ -7,25 +7,21 @@ use Illuminate\Http\Request;
 
 class CoachController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     */
+
     public function index()
     {
-        $questions = Coach::with('team')->get();
+        $coach = Coach::with('team')->get();
 
-        return $questions->toJSON();
+        return $coach->toJSON();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Question  $question
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Coach $question)
+
+    public function showWithSchedule($id)
     {
-        //
+        // $id = $coach->coachID;
+        $results = Coach::with('answers')
+                ->find($id);
+
+        return $results->toJSON();
     }
 }

@@ -22,6 +22,8 @@ Route::resource('coaches', CoachController::class);
 Route::resource('questions', QuestionController::class);
 Route::resource('teams', TeamController::class);
 
+Route::get('coaches/{id}/answers', [CoachController::class, 'showWithSchedule'] );
+
 
 Route::get('/', function () {
     return '<h1>Hello!</h1>';

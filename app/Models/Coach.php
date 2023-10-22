@@ -11,6 +11,8 @@ class Coach extends Model
 
     protected $table='coaches';
 
+    protected $primaryKey = 'coachID';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -28,5 +30,10 @@ class Coach extends Model
     public function team(){
 
         return $this->hasOne(Team::class,'teamID', 'TeamId');
+    }
+
+    public function answers(){
+
+        return $this->hasMany(Answer::class,'coachID', 'coachID');
     }
 }
