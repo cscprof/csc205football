@@ -19,14 +19,8 @@ class TeamController extends Controller
         return $teams->toJSON();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Question  $question
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Team $question)
+    public function show(Team $team)
     {
-        //
+        return $team->toJSON();
     }
 }

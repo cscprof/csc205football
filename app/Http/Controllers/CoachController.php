@@ -15,6 +15,11 @@ class CoachController extends Controller
         return $coach->toJSON();
     }
 
+    public function show(Coach $coach)
+    {
+        return $coach->toJSON();
+    }
+
 
     public function showWithSchedule($id)
     {

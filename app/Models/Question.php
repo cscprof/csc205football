@@ -11,6 +11,8 @@ class Question extends Model
 
     protected $table='questions';
 
+    protected $primaryKey = 'questionID';
+
     /**
      * The attributes that are mass assignable.
      *

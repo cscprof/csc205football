@@ -34,6 +34,6 @@ class Coach extends Model
 
     public function answers(){
 
-        return $this->hasMany(Answer::class,'coachID', 'coachID');
+        return $this->hasMany(Answer::class,'coachID');
     }
 }

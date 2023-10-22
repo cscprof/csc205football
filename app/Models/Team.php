@@ -11,6 +11,8 @@ class Team extends Model
 
     protected $table='teams';
 
+    protected $primaryKey = 'teamID';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -23,7 +25,7 @@ class Team extends Model
 
     public function coaches(){
 
-        return $this->hasMany(Coach::class,'TeamId', 'teamID');
+        return $this->hasMany(Coach::class,'TeamId');
 
     }
 
