@@ -4,29 +4,55 @@ namespace App\Http\Controllers;
 
 use App\Models\Coach;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
 
 class CoachController extends Controller
 {
 
     public function index()
     {
-        $coach = Coach::with('team')->get();
+        $coach = Coach::get();
 
         return $coach->toJSON();
     }
 
     public function show(Coach $coach)
     {
-        return $coach->toJSON();
+        $id = $coach->coachID;
+
+        $result = Coach::find($id);
+
+        if ($result != null) {
+            return $result->toJSON();
+        } else {
+            $resp = new Response();
+            return $resp->setStatusCode(204, 'Invalid Coach ID');
+        }
+
     }
 
+    public function showWithTeam($id) {
 
-    public function showWithSchedule($id)
+        $result = Coach::with('team')->find($id);
+
+        if ($result != null) {
+            return $result->toJSON();
+        } else {
+            $resp = new Response();
+            return $resp->setStatusCode(204, 'Invalid Coach ID');
+        }
+    }
+
+    public function showWithAnswers($id)
     {
-        // $id = $coach->coachID;
-        $results = Coach::with('answers')
-                ->find($id);
+        $r = Coach::with('answers')->find($id);
 
-        return $results->toJSON();
+        if ($r != null) {
+            return $r->toJSON();
+        } else {
+            $resp = new Response();
+            return $resp->setStatusCode(204, 'Invalid Coach ID');
+        }
     }
 }

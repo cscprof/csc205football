@@ -4,23 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Team;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class TeamController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        $teams = Team::with('coaches')->get();;
+        $result = Team::with('coaches')->get();;
 
-        return $teams->toJSON();
+        if ($result != null) {
+            return $result->toJSON();
+        } else {
+            $resp = new Response();
+            return $resp->setStatusCode(204, 'Invalid Request');
+        }
+
     }
 
-    public function show(Team $team)
-    {
-        return $team->toJSON();
-    }
 }
