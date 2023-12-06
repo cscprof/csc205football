@@ -55,4 +55,21 @@ class CoachController extends Controller
             return $resp->setStatusCode(204, 'Invalid Coach ID');
         }
     }
+
+    public function teamCoachesWithAnswers($id)
+    {
+        $result = Coach::where('teamID', $id)
+                ->with('team')
+                ->with('answers')
+                ->get();
+
+        if ($result != null) {
+            return $result->toJSON();
+        } else {
+            $resp = new Response();
+            return $resp->setStatusCode(204, 'Invalid Request');
+        }
+
+    }
+
 }

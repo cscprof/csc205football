@@ -29,4 +29,10 @@ class Team extends Model
 
     }
 
+    public function answers(){
+
+        return $this->hasManyThrough(Answer::class, Coach::class);
+
+    }
+
 }
